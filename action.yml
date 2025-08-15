@@ -1,4 +1,4 @@
-name: "macadam Action"
+name: "macadam init Action"
 description: 'Wrapper for macadam command to run virtual machines on GitHub runners'
 author: "Gerard Braad <me@gbraad.nl>"
 inputs:
@@ -22,5 +22,4 @@ runs:
         macadam init ${{ inputs.disk_image }} \
           --username ${{ inputs.image_username }} \
           --ssh-identity-path ${{ inputs.identity_path }}
-        macadam start
       shell: bash
