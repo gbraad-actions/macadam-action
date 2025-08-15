@@ -1,0 +1,26 @@
+name: "macadam Action"
+description: 'Wrapper for macadam command to run virtual machines on GitHub runners'
+author: "Gerard Braad <me@gbraad.nl>"
+inputs:
+  disk_image:
+    description: 'The virtual machine disk image to use'
+    required: true
+    default: ''
+  image_username:
+    description: 'User to log in as (optional, default: core)'
+    required: false
+    default: 'core'
+  identity_path:
+    description: 'SSH key to authenticate'
+    required: true
+    default: ''
+runs:
+  using: 'composite'
+  steps:
+    - name: Execute macadam command
+      run: |
+        macadam init ${{ inputs.disk_image }} \
+          --username ${{ inputs.image_username }} \
+          --ssh-identity-path ${{ inputs.identity_path }}
+        macadam start
+      shell: bash
