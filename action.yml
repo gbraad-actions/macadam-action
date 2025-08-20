@@ -23,7 +23,4 @@ runs:
         macadam init ${{ inputs.disk_image }} \
           --username ${{ inputs.image_username }} \
           --ssh-identity-path ${{ inputs.identity_path }}
-
-        # settle after image resize
-        sleep 3
       shell: bash
