@@ -19,7 +19,11 @@ runs:
   steps:
     - name: Execute macadam command
       run: |
+        # macadam init and resize the disk image
         macadam init ${{ inputs.disk_image }} \
           --username ${{ inputs.image_username }} \
           --ssh-identity-path ${{ inputs.identity_path }}
+
+        # settle after image resize
+        sleep 1
       shell: bash
