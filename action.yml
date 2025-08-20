@@ -25,5 +25,5 @@ runs:
           --ssh-identity-path ${{ inputs.identity_path }}
 
         # settle after image resize
-        sleep 1
+        sleep 3
       shell: bash
