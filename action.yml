@@ -2,6 +2,10 @@ name: "macadam init Action"
 description: 'Wrapper for macadam command to run virtual machines on GitHub runners'
 author: "Gerard Braad <me@gbraad.nl>"
 inputs:
+  machine_name:
+    description: 'The name of the VM'
+    required: false
+    default: 'macadam'
   disk_image:
     description: 'The virtual machine disk image to use'
     required: true
@@ -20,7 +24,9 @@ runs:
     - name: Execute macadam command
       run: |
         # macadam init and resize the disk image
-        macadam init ${{ inputs.disk_image }} \
+        macadam init \
+          --name ${{ inputs.machine_name }} \
           --username ${{ inputs.image_username }} \
           --ssh-identity-path ${{ inputs.identity_path }}
+          ${{ inputs.disk_image }}
       shell: bash
