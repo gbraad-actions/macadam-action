@@ -27,6 +27,6 @@ runs:
         macadam init \
           --name ${{ inputs.machine_name }} \
           --username ${{ inputs.image_username }} \
-          --ssh-identity-path ${{ inputs.identity_path }}
+          --ssh-identity-path ${{ inputs.identity_path }} \
           ${{ inputs.disk_image }}
       shell: bash
